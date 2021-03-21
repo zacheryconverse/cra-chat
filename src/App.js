@@ -32,19 +32,19 @@ const CustomChannelPreview = (props) => {
   const messagePreview = messages[messages.length - 1]?.text.slice(0, 30);
 
   return (
-    <div onClick={() => setActiveChannel(channel)} style={{ margin: "12px" }}>
+    <div onClick={() => setActiveChannel(channel)} style={{ margin: "12px", cursor: 'pointer' }}>
       <div>{channel.data.name || "Unnamed Channel"}</div>
       <div style={{ fontSize: "14px" }}>{messagePreview}</div>
     </div>
   );
 };
 
-const CustomMessage = (props) => (
-  <div>
-    <b style={{ marginRight: "4px" }}>{props.message.user.name}</b>{" "}
-    {props.message.text}
-  </div>
-);
+// const CustomMessage = (props) => (
+//   <div>
+//     <b style={{ marginRight: "4px" }}>{props.message.user.name}</b>{" "}
+//     {props.message.text}
+//   </div>
+// );
 
 // const Paginator = (props) => (
 //   <InfiniteScrollPaginator threshold={300} {...props} />
@@ -83,7 +83,7 @@ function App() {
 
   return (
     <Chat client={chatClient} theme={theme}>
-    {/* <Chat client={chatClient} theme={theme}> */}
+      {/* <Chat client={chatClient} theme={theme}> */}
       <header>Stream Chat App</header>
       <ChannelList
         filters={filters}
@@ -96,7 +96,8 @@ function App() {
         <Window>
           <ChannelHeader />
           {/* <MessageList Message={MessageTeam} /> */}
-          <MessageList Message={CustomMessage} />
+          <MessageList />
+          {/* <MessageList Message={CustomMessage} /> */}
           <MessageInput />
           {/* <MessageInput Input={MessageInputFlat} /> */}
         </Window>
