@@ -1,8 +1,8 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with:
-[Create React App](https://github.com/facebook/create-react-app)\n
-[stream-chat](https://www.npmjs.com/package/stream-chat)\n
+[Create React App](https://github.com/facebook/create-react-app)\
+[stream-chat](https://www.npmjs.com/package/stream-chat)\
 [stream-chat-react](https://www.npmjs.com/package/stream-chat-react)
 
 ## Available Scripts
