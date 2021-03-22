@@ -85,6 +85,7 @@ const theme = "messaging light";
 //       onClick={() => setActiveChannel(channel)}
 //       style={{ margin: "12px", cursor: "pointer" }}
 //     >
+//       <img src={channel.data.image} alt='avatar' style={{ height: '40px', borderRadius: '5px' }}></img>
 //       <div>{channel.data.name || "Unnamed Channel"}</div>
 //       <div style={{ fontSize: "14px" }}>{messagePreview}</div>
 //     </div>
@@ -135,12 +136,12 @@ function App() {
   return (
     <Chat client={chatClient} theme={theme}>
       <header>Stream Chat App</header>
-      {/* <ChannelList
+      <ChannelList
         filters={filters}
         sort={sort}
         // Preview={CustomChannelPreview}
-      /> */}
-      <ChannelList filters={filters} sort={sort} Paginator={Paginator} />
+      />
+      {/* <ChannelList filters={filters} sort={sort} Paginator={Paginator} /> */}
       {/* <Channel channel={channel}> */}
       <Channel>
         {/* <Channel Attachment={CustomAttachment}> */}
