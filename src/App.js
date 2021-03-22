@@ -9,7 +9,7 @@ import {
   LoadingIndicator,
   InfiniteScrollPaginator,
   MessageInput,
-  MessageInputFlat,
+  // MessageInputFlat,
   MessageList,
   // MessageTeam,
   Thread,
@@ -25,6 +25,24 @@ const userToken = process.env.REACT_APP_STREAM_TOKEN;
 const filters = { type: "messaging", members: { $in: [userId] } };
 const sort = { last_message_at: -1 };
 const theme = "messaging light";
+
+// const chatClient = StreamChat.getInstance(apiKey);
+
+// chatClient.connectUser(
+//   {
+//     id: userId,
+//     name: userId,
+//     image: "https://www.w3schools.com/w3images/avatar2.png",
+//   },
+//   userToken,
+// );
+
+// const channel = chatClient.channel("messaging", userId, {
+//   image:
+//     "https://media.geeksforgeeks.org/wp-content/uploads/20200619190327/avatar_default_19_A06A42.png",
+//   name: "Chat about Stream",
+//   members: [userId],
+// });
 
 // const attachments = [
 //   {
@@ -80,13 +98,6 @@ const theme = "messaging light";
 //   </div>
 // );
 
-// const channel = client.channel("messaging", userId, {
-//   image:
-//     "https://media.geeksforgeeks.org/wp-content/uploads/20200619190327/avatar_default_19_A06A42.png",
-//   name: "Chat about Stream",
-//   members: [userId],
-// });
-
 const Paginator = (props) => (
   <InfiniteScrollPaginator threshold={5} {...props} />
 );
@@ -97,7 +108,6 @@ function App() {
   useEffect(() => {
     const client = StreamChat.getInstance(apiKey);
     const initChat = async () => {
-
       await client.connectUser(
         {
           id: userId,
@@ -105,21 +115,20 @@ function App() {
           image: "https://www.w3schools.com/w3images/avatar2.png",
         },
         userToken
-        );
+      );
 
-        // const [channelResponse] = await client.queryChannels(filters, sort);
+      // const [channelResponse] = await client.queryChannels(filters, sort);
+      // await channelResponse.sendMessage({
+      //   text:
+      //     "Your selected product is out of stock, would you like to select one of these alternatives?",
+      //   attachments,
+      // });
 
-        // await channelResponse.sendMessage({
-          //   text:
-          //     "Your selected product is out of stock, would you like to select one of these alternatives?",
-          //   attachments,
-          // });
+      setChatClient(client);
+    };
 
-          setChatClient(client);
-        };
-
-        initChat();
-      }, []);
+    initChat();
+  }, []);
 
   if (!chatClient) return <LoadingIndicator />;
 
@@ -140,8 +149,8 @@ function App() {
           {/* <MessageList Message={MessageTeam} /> */}
           <MessageList />
           {/* <MessageList Message={CustomMessage} /> */}
-          {/* <MessageInput /> */}
-          <MessageInput Input={MessageInputFlat} />
+          <MessageInput />
+          {/* <MessageInput Input={MessageInputFlat} /> */}
         </Window>
         <Thread />
       </Channel>
